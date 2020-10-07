@@ -1,4 +1,4 @@
-
+/*
 function game() {
     let win = 0;
     let lose = 0;
@@ -24,8 +24,15 @@ function game() {
      }
   }
 
+  */
 
 
+  
+  const choices = document.querySelectorAll('.choice');
+  
+
+
+//let playerSelection = prompt("Enter your selection: rock, paper or scissors?");
 
 
 function computerPlay() {
@@ -34,42 +41,44 @@ function computerPlay() {
 }
 
 
-function playRound(playerSelection, computerSelection) {
-    let ps = playerSelection.toLowerCase();
+function playRound(e) {
+    let playerSelection = e.target.id;
+    console.log('Player selection: ' + playerSelection);
+    let computerSelection = computerPlay();
+    console.log('Computer selection: ' + computerSelection);
     let outcome = [" Paper beats Rock.", " Rock beats Scissors.", " Scissors beats paper."];
     let result = ["You win!", "You lose!"];
-      if (ps === computerSelection) {
-        return "It's a tie.";
+      if (playerSelection === computerSelection) {
+        
+        return console.log("It's a tie.");
       } 
 
-      if (ps === "rock") {
+      if (playerSelection === "rock") {
           if (computerSelection === "paper") {
-              return result[1] + outcome[0];
+              return console.log(result[1] + outcome[0]);
           } else {
-              return result[0] + outcome[1];
+              return console.log(result[0] + outcome[1]);
           }
       }
 
  
-      if (ps === "paper") {
+      if (playerSelection === "paper") {
           if (computerSelection === "rock") {
-              return result[0] + outcome[0];
+              return console.log(result[0] + outcome[0]);
           } else {
-              return result[1] + outcome[2];
+              return console.log(result[1] + outcome[2]);
           }
       }
 
 
-      if (ps === "scissors") {
+      if (playerSelection === "scissors") {
           if (computerSelection === "rock") {
-            return result[1] + outcome[1];
+            return console.log(result[1] + outcome[1]);
           } else {
-            return result[0] + outcome[2];
+            return console.log(result[0] + outcome[2]);
           }
           
       }
 }
 
-//const playerSelection = 'rock'
-//const computerSelection = computerPlay()
-//console.log(playRound(playerSelection, computerSelection))
+choices.forEach(choice => choice.addEventListener('click', playRound));

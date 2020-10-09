@@ -10,23 +10,22 @@
     <header>
         <h1>Rock Paper Scissors Game</h1>
     </header>
-    <div id="picks">
+    <div class= "choices" id="choices">
+        <button id="restart" class="restart">Restart Game</button>
         <h2>Make your choice:</h2>
         <span>
-            <button id="rock" value="rock" class="choice">Rock</button>
-            <button id="paper" value="paper" class="choice">Paper</button>
-            <button id="scissors" value="scissors" class="choice">Scissors</button>
+            <button id="rock" class="choice">Rock</button>
+            <button id="paper" class="choice">Paper</button>
+            <button id="scissors" class="choice">Scissors</button>
         </span>
     </div>
-    <div id="scores">
-        <p id="round-result">Round Result:</p>
-        <p id="match-result">Match Result:</p>
+    <div class="score" id="score">
+      
+        <p>Player Score: 0</p>
+        <p>Computer Score: 0</p>
+        
     </div>
-    
-    
-    <div >
-
-    </div>
+    <div class="result" id="result"></div>
     <script src="index.js" defer></script>  
 </body>
 </html>

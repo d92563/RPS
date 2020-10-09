@@ -9,7 +9,7 @@ header {
   color: rgb(231, 228, 228);
 }
 
-#picks {
+.choices {
     text-align: center;
     color: rgb(231, 228, 228);
 }
@@ -39,7 +39,7 @@ p {
     padding: 0.7em;
 }
 
-#scores {
+.score  {
     color: rgb(231, 228, 228);
     text-align: left;
     font-size: 1.2em;
@@ -47,4 +47,39 @@ p {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+.result {
+    color: rgb(231, 228, 228);
+    text-align: left;
+    font-size: 1.2em;
+    position: fixed;
+    top: 65%;
+    left: 53%;
+    transform: translate(-50%, -50%); 
+}
+.text-win {
+    color: green;
+    text-align: justify;
+}
+
+.text-lose {
+    color: red;
+    text-align: justify;
+}
+
+.text-draw {
+    color: yellow;
+    text-align: justify;
+}
+.restart {
+    font-size: 1.1em;
+    border-radius: 3%;
+    border: 30px;
+    padding-left: 1em;
+    padding-right: 1em;
+    transition: 100ms;
+}
+.restart:hover {
+    transform: scale(1.1);
+   
 }

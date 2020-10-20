@@ -1,31 +1,4 @@
-/*
-function game() {
-    let win = 0;
-    let lose = 0;
-    
-    for (let i = 1; i <= 5; i++) {
-        
-        let playerSelection = prompt("Enter your selection: rock, paper or scissors?");
-        let computerSelection = computerPlay();
-        let round = playRound(playerSelection, computerSelection);
-        if (round.includes("win")) {
-            win += 1;
-        } else if (round.includes("lose")) {
-            lose += 1;
-        }
-        console.log(round);
-    }     
-   if (win === lose) {
-       return console.log("Game: Tie!");
-   } else if (win > lose) {
-       return console.log ("Game: You won!");
-   } else {
-       return console.log("Game: You lost!");
-     }
-  }
-
-  */
-  
+ 
   const choices = document.querySelectorAll(".choice");
   choices.forEach(choice => choice.addEventListener("click", play));
 

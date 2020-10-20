@@ -1,31 +1,19 @@
+ 
+  const choices = document.querySelectorAll(".choice");
+  choices.forEach(choice => choice.addEventListener("click", play));
 
-function game() {
-    let win = 0;
-    let lose = 0;
-    
-    for (let i = 1; i <= 5; i++) {
-        
-        let playerSelection = prompt("Enter your selection: rock, paper or scissors?");
-        let computerSelection = computerPlay();
-        let round = playRound(playerSelection, computerSelection);
-        if (round.includes("win")) {
-            win += 1;
-        } else if (round.includes("lose")) {
-            lose += 1;
-        }
-        console.log(round);
-    }     
-   if (win === lose) {
-       return console.log("Game: Tie!");
-   } else if (win > lose) {
-       return console.log ("Game: You won!");
-   } else {
-       return console.log("Game: You lost!");
-     }
+  const scoreboard = {
+    player: 0,
+    computer: 0
+  };
+
+// Play game
+function play(e) {
+    let playerSelection = e.target.id;
+    let computerSelection = computerPlay();
+    let winner = playRound(playerSelection, computerSelection);
+    showWinner(winner, computerSelection);
   }
-
-
-
 
 
 function computerPlay() {
@@ -35,42 +23,79 @@ function computerPlay() {
 
 
 function playRound(playerSelection, computerSelection) {
-    let ps = playerSelection.toLowerCase();
-    let outcome = [" Paper beats Rock.", " Rock beats Scissors.", " Scissors beats paper."];
-    let result = ["You win!", "You lose!"];
-      if (ps === computerSelection) {
-        return "It's a tie.";
+    
+      if (playerSelection === computerSelection) {
+        return "draw";
       } 
 
-      if (ps === "rock") {
+      if (playerSelection === "rock") {
           if (computerSelection === "paper") {
-              return result[1] + outcome[0];
+              return "computer";
           } else {
-              return result[0] + outcome[1];
+              return "player";
           }
       }
 
- 
-      if (ps === "paper") {
+      if (playerSelection === "paper") {
           if (computerSelection === "rock") {
-              return result[0] + outcome[0];
+              return "player";
           } else {
-              return result[1] + outcome[2];
+              return "computer";
           }
       }
 
 
-      if (ps === "scissors") {
+      if (playerSelection === "scissors") {
           if (computerSelection === "rock") {
-            return result[1] + outcome[1];
+            return "computer";
           } else {
-            return result[0] + outcome[2];
+            return "player";
           }
           
       }
 }
 
-//const playerSelection = 'rock'
-//const computerSelection = computerPlay()
-//console.log(playRound(playerSelection, computerSelection))
-game()
+
+const score = document.querySelector(".score");
+let result = document.querySelector("#result");
+
+
+function showWinner(winner, computerSelection) {
+    if (winner === 'player') {
+      scoreboard.player++;
+      result.innerHTML = `
+        <p class="text-win">You Win</p>
+        <p>Computer Chose <strong>${computerSelection.charAt(0).toUpperCase() +
+          computerSelection.slice(1)}</strong></p>
+      `;
+    } else if (winner === 'computer') {
+      scoreboard.computer++;
+      result.innerHTML = `
+        <p class="text-lose">You Lose</p>
+        <p>Computer Chose <strong>${computerSelection.charAt(0).toUpperCase() +
+          computerSelection.slice(1)}</strong></p>
+      `;
+    } else {
+      result.innerHTML = `
+        <p class="text-draw">It's A Draw</p>
+        <p>Computer Chose <strong>${computerSelection.charAt(0).toUpperCase() +
+          computerSelection.slice(1)}</strong></p>
+      `;
+    }
+    score.innerHTML = `
+    <p>Player Score: ${scoreboard.player}</p>
+    <p>Computer Score: ${scoreboard.computer}</p>
+    `;
+}
+const restart = document.querySelector(".restart")
+restart.addEventListener('click', restartGame);
+
+function restartGame() {
+    scoreboard.player = 0;
+    scoreboard.computer = 0;
+    score.innerHTML = `
+      <p>Player: 0</p>
+      <p>Computer: 0</p>
+    `;
+    result.innerHTML = null;
+}
